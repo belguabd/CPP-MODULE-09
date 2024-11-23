@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:55:51 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/23 13:57:00 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:15:23 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, const char *av[])
         BitcoinExchange btc;
         try
         {
-            btc.setMap();
+            btc.setMap(av[1]);
         }
         catch (const std::exception &e)
         {

@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:06:51 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/23 15:35:51 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:17:07 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,17 @@ bool validateMonths(const string &line)
 
     if (month == 2 && (day > 29 || (day > 28 && !isLeapYear(year))))
         return (false);
-    return (true);
-    // return !((month == 1 && day > 31) ||
-    //        (month == 3 && day > 31) ||
-    //        (month == 4 && day > 30) ||
-    //        (month == 5 && day > 31) ||
-    //        (month == 6 && day > 30) ||
-    //        (month == 7 && day > 31) ||
-    //        (month == 8 && day > 31) ||
-    //        (month == 9 && day > 30) ||
-    //        (month == 10 && day > 31) ||
-    //        (month == 11 && day > 30) ||
-    //        (month == 12 && day > 31));
+    return !((month == 1 && day > 31) ||
+             (month == 3 && day > 31) ||
+             (month == 4 && day > 30) ||
+             (month == 5 && day > 31) ||
+             (month == 6 && day > 30) ||
+             (month == 7 && day > 31) ||
+             (month == 8 && day > 31) ||
+             (month == 9 && day > 30) ||
+             (month == 10 && day > 31) ||
+             (month == 11 && day > 30) ||
+             (month == 12 && day > 31));
 }
 
 bool isValidDateLine(const std::string &line)
@@ -173,9 +172,13 @@ bool IsValidCsv(const string &buffer)
              std::isdigit(buffer[9])));
 }
 
-void BitcoinExchange::setMap()
+void BitcoinExchange::setMap(const string &av)
 {
     std::ifstream file_name("data.csv");
+    std::ifstream input_file(av);
+    if (!file_name.is_open() || !input_file.is_open())
+        throw std::invalid_argument("file doesn't exit");
+
     std::string buffer;
 
     getline(file_name, buffer);
