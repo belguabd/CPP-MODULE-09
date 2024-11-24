@@ -6,16 +6,16 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:06:51 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/23 16:17:07 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:21:17 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <sstream>
-using namespace std;
 
 #define DATE 10
 #define VALUE 12
+using namespace std;
 
 int BitcoinExchange::ft_atoi(const std::string &string)
 {
