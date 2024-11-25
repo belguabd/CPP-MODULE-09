@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:22:39 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/25 19:01:43 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:27:39 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void PmergeMe::setData()
 }
 void PmergeMe::getGreaterElement()
 {
-    std::vector<std::pair<int, int>>::iterator it = data.begin();
+    std::vector<std::pair<int, int> >::iterator it = data.begin();
     for (; it != data.end(); it++)
     {
         size_t tmp = it->first;
@@ -63,12 +63,13 @@ void PmergeMe::getGreaterElement()
 }
 void PmergeMe::sortAscending()
 {
-    std::vector<std::pair<int,int> >::iterator it = data.begin() + 1;
+    std::vector<std::pair<int, int> >::iterator it = data.begin() + 1;
     for (; it != data.end(); it++)
     {
 
         size_t current = it->first;
-        std::vector<std::pair<int,int> >::iterator j = (it - 1);
+        std::vector<std::pair<int, int>
+ >::iterator j = (it - 1);
 
         while (j >= data.begin() && j->first > current)
         {
@@ -78,9 +79,32 @@ void PmergeMe::sortAscending()
         (j + 1)->first = current;
     }
 }
+void PmergeMe::binarySearch()
+{
+
+    std::vector<std::pair<int, int> >::iterator it = data.begin();
+    for (; it != data.end(); it++)
+        mainChian.push_back(it->first);
+    it = data.begin();
+    for (; it != data.end(); it++)
+        pend.push_back(it->second);
+
+    std::vector<int>::iterator iter = pend.begin();
+    for (; iter != pend.end(); iter++)
+    {
+        std::vector<int>::iterator pos = std::lower_bound(mainChian.begin(), mainChian.end(), *iter);
+        mainChian.insert(pos, *iter);
+    }
+    iter = mainChian.begin();
+    for (; iter != mainChian.end(); iter++)
+    {
+        std::cout << *iter << std::endl;
+    }
+}
 void PmergeMe::main()
 {
     setData();
     getGreaterElement();
     sortAscending();
+    binarySearch();
 }
