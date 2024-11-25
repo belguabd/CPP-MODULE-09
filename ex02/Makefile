@@ -1,4 +1,4 @@
-FLAGS=c++ #-fsanitize=address #-Wextra -Werror -Wall -std=c++98  
+FLAGS=c++ -std=c++11#-fsanitize=address #-Wextra -Werror -Wall -std=c++98  
 
 
 NAME=PmergeMe

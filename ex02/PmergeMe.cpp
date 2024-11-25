@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:22:39 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/25 16:39:51 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:01:43 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,20 @@ void PmergeMe::getGreaterElement()
 }
 void PmergeMe::sortAscending()
 {
-    
+    std::vector<std::pair<int,int> >::iterator it = data.begin() + 1;
+    for (; it != data.end(); it++)
+    {
+
+        size_t current = it->first;
+        std::vector<std::pair<int,int> >::iterator j = (it - 1);
+
+        while (j >= data.begin() && j->first > current)
+        {
+            (j + 1)->first = j->first;
+            j--;
+        }
+        (j + 1)->first = current;
+    }
 }
 void PmergeMe::main()
 {
